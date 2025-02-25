@@ -1,0 +1,197 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VFS || Booking</title>
+    <meta name="description" content="Glacis offers an online earning platform where users make money by inviting others, helping verify new users, selling ebooks, advertising, and more.">
+    <meta property="og:title" content="Glacis">
+    <meta property="og:description" content="Join Glacis to earn money through various online opportunities including referrals, verifications, and advertising.">
+    <meta property="og:image" content="/images/glacis-logo.jpg">
+    <meta property="og:url" content="https://glacis.antocapteknologies.com">
+
+    <!-- Use only one Font Awesome import -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/images/glacis-logo.jpg" type="image/x-icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+
+    <script type="module">
+        import { ensureAuthenticated } from "./script.js";
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            ensureAuthenticated(); 
+        });
+    </script>   
+ 
+ 
+    <!-- Header (Contains Logo, Book Button & Mobile Menu) -->
+    <header class="w-full flex justify-between items-center px-6 py-4 shadow-md bg-white">
+        <!-- Logo -->
+        <a href="/" class="flex items-center space-x-2">
+            <span class="text-4xl font-extrabold text-black tracking-wide">V</span>
+            <span class="text-4xl font-extrabold text-blue-400 tracking-wide">F</span>
+            <span class="text-4xl font-extrabold text-pink-300 tracking-wide">S</span>
+        </a>
+
+        <!-- Desktop Book Button -->
+        <a href="/booking" class="hidden lg:block text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
+            Book Now
+        </a>
+
+        <!-- Mobile Navigation Icon -->
+        <button id="hamburger-icon" class="lg:hidden text-gray-800 text-3xl">
+            ☰
+        </button>
+    </header>
+
+    <!-- Mobile Navigation (Hidden by Default) -->
+    <nav id="mobile-nav" class="fixed left-0 top-0 h-full w-3/4 bg-white shadow-lg transform -translate-x-full transition-transform lg:hidden z-50">
+        <div class="p-6 flex justify-between items-center border-b border-gray-300">
+            <h3 class="text-gray-800 text-xl font-semibold">Menu</h3>
+            <!-- Modern Close Button -->
+            <button id="close-nav" class="text-gray-600 text-3xl bg-gray-200 hover:bg-gray-300 rounded-full p-2">
+                ⨉
+            </button>
+        </div>
+        <div class="p-6 flex flex-col space-y-6">
+            <a href="/" class="text-gray-800 text-lg hover:text-blue-500">Home</a>
+            <a href="/chat" class="text-gray-800 text-lg hover:text-blue-500">Chat with AI</a>
+            <a href="/contact" class="text-gray-800 text-lg hover:text-blue-500">Contact</a>
+            <a href="/booking" 
+               class="text-white text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 rounded-full text-center shadow-lg">
+               Book Now
+            </a>
+        </div>
+    </nav>
+
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden lg:hidden"></div>
+
+    <section class="container mx-auto mt-20 px-4 lg:px-20">
+        <!-- Booking Steps -->
+<div class="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0 lg:space-x-10">
+    <div class="w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
+        <div class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">1</div>
+        <span class="text-lg font-semibold">Appointment Details</span>
+    </div>
+    <div class="w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
+        <div class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">2</div>
+        <span class="text-lg font-semibold">Category Selection</span>
+    </div>
+    <div class="w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
+        <div class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">3</div>
+        <span class="text-lg font-semibold">Document Submission</span>
+    </div>
+    <div class="w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
+        <div class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">4</div>
+        <span class="text-lg font-semibold">Payment</span>
+    </div>
+    <div class="w-full lg:w-1/5 text-center py-4 flex flex-col items-center">
+        <div class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">5</div>
+        <span class="text-lg font-semibold">Confirmation</span>
+    </div>
+</div>
+        
+        <!-- Step Content -->
+        <div class="mt-10 p-8 bg-white shadow-lg rounded-lg">
+            <!-- Appointment Details -->
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-xl font-semibold mb-2">Choose Your Application Center</label>
+                    <select class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option>Portugal Visa Application Center Singapore</option>
+                        <option>Others...</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xl font-semibold mb-2">Choose Your Application Category</label>
+                    <select class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option>DP Job Seeker</option>
+                        <option>Long Stay and Residency</option>
+                        <option>Short Stay</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>    
+
+   <!-- Footer -->
+   <footer class="bg-gray-900 text-white text-center py-4 mt-auto">
+    <p class="text-sm">&copy; 2025 <span class="font-bold">VFS</span>. All rights reserved.</p>
+    <p class="text-xs mt-1">
+        Designed by 
+        <a href="https://antocapteknologies.com" class="text-blue-400 hover:text-blue-300 font-semibold" target="_blank">
+            Antocap Teknologies
+        </a>
+    </p>
+</footer>  
+  
+      
+<script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js"></script>
+
+<!-- Your custom script -->
+<script type="module" src="script.js"></script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const ctx = document.getElementById("earningsChart").getContext("2d");
+    new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+            datasets: [
+                {
+                    label: "Earnings ($)",
+                    data: [0, 100, 300, 600, 900, 1500],
+                    borderColor: "#4CAF50",
+                    backgroundColor: "rgba(76, 175, 80, 0.2)",
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true,
+                },
+            ],
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true },
+            },
+        },
+    });
+});
+
+
+document.addEventListener("contextmenu", function (event) {
+    event.preventDefault(); // Disable right-click
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && (event.key === "u" || event.key === "U")) {
+      event.preventDefault(); // Disable "View Source" (Ctrl + U)
+    }
+    if (event.ctrlKey && event.shiftKey && event.key === "I") {
+      event.preventDefault(); // Disable DevTools (Ctrl + Shift + I)
+    }
+    if (event.ctrlKey && event.shiftKey && event.key === "J") {
+      event.preventDefault(); // Disable DevTools (Ctrl + Shift + J)
+    }
+    if (event.ctrlKey && event.key === "S") {
+      event.preventDefault(); // Disable Save (Ctrl + S)
+    }
+    if (event.ctrlKey && event.key === "P") {
+      event.preventDefault(); // Disable Print (Ctrl + P)
+    }
+  });
+
+
+</script>
+</body>
+</html>
