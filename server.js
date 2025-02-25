@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const sampleUser = { name: "John Doe" };
 
 // Routes
-const pages = ["dashboard", "earnings", "help", "validator", "referral", "withdraw", "profile"];
+const pages = [ "/", "dashboard", "chat", "booking", "validator", "referral", "withdraw", "profile"];
 
 // Home Page (Registration Page)
 app.get("/", (req, res) => res.render("index"));

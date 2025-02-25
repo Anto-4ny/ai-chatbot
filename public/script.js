@@ -154,13 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         firstName,
                         lastName,
                         email,
-                        referralCode,
-                        referralLink,
-                        paymentStatus: false,
-                        amountPaid: 0,
-                        totalEarnings: 0,
-                        totalReferrals: 0,
-                        totalViews: 0,
                         registeredAt: new Date(),
                     });
 
@@ -177,118 +170,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
-// Display referral link and handle sharing
-const referralLinkElement = document.getElementById("referral-link");
-const copyButton = document.getElementById("copy-link-button");
-const whatsappShareButton = document.getElementById("whatsapp-share-button");
-
-const displayReferralLink = (referralLink) => {
-    if (referralLinkElement) {
-        referralLinkElement.textContent = referralLink;
-
-        if (copyButton) {
-            copyButton.addEventListener("click", () => {
-                navigator.clipboard
-                    .writeText(referralLink)
-                    .then(() => alert("Referral link copied to clipboard!"))
-                    .catch(() => alert("Failed to copy referral link."));
-            });
-        }
-
-        if (whatsappShareButton) {
-            whatsappShareButton.href = `https://wa.me/?text=Lets Earn Together Buddy: ${referralLink}`;
-        }
-    }
-};
-
-// Load referral link from Firestore if logged in
-const loadReferralLink = async () => {
-    const userEmail = localStorage.getItem("userEmail");
-    if (userEmail) {
-        const q = query(collection(db, "users"), where("email", "==", userEmail));
-        const querySnapshot = await getDocs(q);
-
-        if (!querySnapshot.empty) {
-            const userDoc = querySnapshot.docs[0];
-            const referralLink = userDoc.data().referralLink;
-            displayReferralLink(referralLink);
-        }
-    }
-};
-
-loadReferralLink();
-
-// Function to check user's payment status
-const checkAuthenticationAndPayment = async () => {
-    const userEmail = localStorage.getItem("userEmail");
-
-    if (!userEmail) {
-        // Redirect to login if no email is found in localStorage
-        if (!window.location.pathname.includes("/")) {
-            window.location.href = "/";
-        }
-        return;
-    }
-
-    try {
-        const q = query(collection(db, "users"), where("email", "==", userEmail));
-        const querySnapshot = await getDocs(q);
-
-        if (!querySnapshot.empty) {
-            const userDoc = querySnapshot.docs[0];
-            const userData = userDoc.data();
-
-            if (userData.paymentStatus) {
-                console.log("You have paid.");
-                localStorage.setItem("paymentStatus", "paid");
-            } else {
-                console.log("You have not paid. Redirecting to payment pop-up...");
-                localStorage.setItem("paymentStatus", "not-paid");
-                if (!window.location.pathname.includes("dashboard")) {
-                    window.location.href = "dashboard";
-                }
-            }
-        } else {
-            console.error("User document not found.");
-        }
-    } catch (error) {
-        console.error("Error checking payment status:", error);
-    }
-};
-
-// Ensure user authentication and handle payment status
-auth.onAuthStateChanged(async (user) => {
-    if (user) {
-        localStorage.setItem("userEmail", user.email);
-        await checkAuthenticationAndPayment();
-    } else {
-        if (!window.location.pathname.includes("/")) {
-            window.location.href = "/";
-        }
-    }
-});
-
 document.addEventListener("DOMContentLoaded", () => {
-  const hamburgerIcon = document.getElementById("hamburger-icon");
-  const closeNav = document.getElementById("close-nav");
-  const mobileNav = document.getElementById("mobile-nav");
-  const overlay = document.getElementById("overlay");
+    const hamburgerIcon = document.getElementById("hamburger-icon");
+    const closeNav = document.getElementById("close-nav");
+    const mobileNav = document.getElementById("mobile-nav");
+    const overlay = document.getElementById("overlay");
 
-  // Function to open mobile navigation
-  const openNav = () => {
-      mobileNav.classList.remove("-translate-x-full");
-      overlay.classList.remove("hidden");
-  };
+    // Function to toggle mobile navigation
+    const toggleNav = () => {
+        const isOpen = !mobileNav.classList.contains("-translate-x-full");
+        if (isOpen) {
+            closeMobileNav();
+        } else {
+            openNav();
+        }
+    };
 
-  // Function to close mobile navigation
-  const closeMobileNav = () => {
-      mobileNav.classList.add("-translate-x-full");
-      overlay.classList.add("hidden");
-  };
+    // Function to open mobile navigation
+    const openNav = () => {
+        mobileNav.classList.remove("-translate-x-full");
+        overlay.classList.remove("hidden");
+    };
 
-  // Event Listeners
-  hamburgerIcon.addEventListener("click", openNav);
-  closeNav.addEventListener("click", closeMobileNav);
-  overlay.addEventListener("click", closeMobileNav);
+    // Function to close mobile navigation
+    const closeMobileNav = () => {
+        mobileNav.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+    };
+
+    // Event Listeners
+    hamburgerIcon.addEventListener("click", toggleNav);
+    closeNav.addEventListener("click", closeMobileNav);
+    overlay.addEventListener("click", closeMobileNav);
+    
+    // Close mobile menu when clicking anywhere outside
+    document.addEventListener("click", (event) => {
+        if (
+            !mobileNav.contains(event.target) && 
+            !hamburgerIcon.contains(event.target) &&
+            !mobileNav.classList.contains("-translate-x-full")
+        ) {
+            closeMobileNav();
+        }
+    });
 });

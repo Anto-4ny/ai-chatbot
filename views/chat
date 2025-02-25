@@ -1,0 +1,181 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Glacis || Dashboard</title>
+    <meta name="description" content="Glacis offers an online earning platform where users make money by inviting others, helping verify new users, selling ebooks, advertising, and more.">
+    <meta property="og:title" content="Glacis">
+    <meta property="og:description" content="Join Glacis to earn money through various online opportunities including referrals, verifications, and advertising.">
+    <meta property="og:image" content="/images/glacis-logo.jpg">
+    <meta property="og:url" content="https://glacis.antocapteknologies.com">
+
+    <!-- Use only one Font Awesome import -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/images/glacis-logo.jpg" type="image/x-icon">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN (Load this in the <head> or before your script) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<!-- Header -->
+<header class="flex items-center justify-between px-8 py-4 bg-black shadow-lg fixed w-full top-0 z-50">
+    <a href="/" class="flex items-center space-x-2">
+        <span class="text-4xl font-extrabold text-white tracking-wide">V</span>
+        <span class="text-4xl font-extrabold text-blue-400 tracking-wide">C</span>
+        <span class="text-4xl font-extrabold text-gray-300 tracking-wide">F</span>
+    </a>
+    
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex space-x-8">
+        <a href="/" class="text-white text-lg font-semibold hover:text-blue-400 transition duration-300">Home</a>
+        <a href="/chat" class="text-white text-lg font-semibold hover:text-blue-400 transition duration-300">Chat with AI</a>
+        <a href="/contact" class="text-white text-lg font-semibold hover:text-blue-400 transition duration-300">Contact</a>
+        <a href="/booking" 
+           class="text-white text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
+           Book Now
+        </a>
+    </nav>
+
+    <!-- Mobile Navigation Icon -->
+    <button id="hamburger-icon" class="text-white text-3xl lg:hidden">
+        <i class="fas fa-bars"></i>
+    </button>
+</header>
+
+<!-- Mobile Navigation -->
+<nav id="mobile-nav" class="fixed left-0 top-0 h-full w-3/4 bg-black shadow-lg transform -translate-x-full transition-transform lg:hidden z-50">
+    <div class="p-6 flex justify-between items-center border-b border-gray-700">
+        <h3 class="text-white text-xl font-semibold">Menu</h3>
+        <button id="close-nav" class="text-gray-300 text-3xl"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="p-6 flex flex-col space-y-6">
+        <a href="/" class="text-white text-lg hover:text-blue-400">Home</a>
+        <a href="/chat" class="text-white text-lg hover:text-blue-400">Chat with AI</a>
+        <a href="/contact" class="text-white text-lg hover:text-blue-400">Contact</a>
+        <a href="/booking" 
+           class="text-white text-lg font-semibold bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-3 rounded-full text-center shadow-lg">
+           Book Now
+        </a>
+    </div>
+</nav>
+
+<!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden lg:hidden"></div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Interface</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("-translate-x-full");
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white font-sans h-screen flex">
+
+    <!-- Sidebar (Initially Hidden) -->
+    <div id="sidebar" class="fixed left-0 top-0 h-full w-1/4 bg-gray-800 shadow-lg transform -translate-x-full transition-transform md:translate-x-0">
+        <div class="p-4 border-b border-gray-700 flex justify-between items-center">
+            <h2 class="text-lg font-semibold">Menu</h2>
+            <button class="md:hidden text-gray-400 hover:text-white" onclick="toggleSidebar()">✖</button>
+        </div>
+        <nav class="p-4 space-y-4">
+            <a href="#" class="block text-gray-300 hover:text-white">📂 Chat History</a>
+            <a href="#" class="block text-gray-300 hover:text-white">⚙️ Settings</a>
+            <a href="#" class="block text-gray-300 hover:text-white">📞 Contact Support</a>
+        </nav>
+    </div>
+
+    <!-- Chat Container -->
+    <div class="flex-1 flex flex-col">
+        <!-- Header -->
+        <header class="bg-gray-800 p-4 flex justify-between items-center shadow-lg">
+            <button class="text-gray-400 hover:text-white md:hidden" onclick="toggleSidebar()">☰</button>
+            <h1 class="text-xl font-semibold">AI Chat</h1>
+        </header>
+
+        <!-- Chat Messages -->
+        <div id="chat-container" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- User Message -->
+            <div class="flex justify-end">
+                <div class="bg-blue-500 text-white p-3 rounded-lg max-w-xs md:max-w-md">
+                    <p>Hello, AI! How are you?</p>
+                </div>
+            </div>
+
+            <!-- AI Message -->
+            <div class="flex items-start space-x-2">
+                <div class="bg-gray-800 text-white p-3 rounded-lg max-w-xs md:max-w-md relative">
+                    <p>I'm doing great! How can I assist you today?</p>
+                    <!-- Like/Dislike Buttons -->
+                    <div class="absolute -bottom-6 left-2 flex space-x-2 text-gray-400">
+                        <button class="hover:text-green-400">👍</button>
+                        <button class="hover:text-red-400">👎</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="bg-gray-800 p-4 flex items-center space-x-2">
+            <input type="text" placeholder="Type a message..." class="flex-1 p-2 bg-gray-700 rounded-lg focus:outline-none">
+            <button class="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg text-white">Send</button>
+        </div>
+    </div>
+
+ 
+<footer class="bg-gray-900 text-white text-center py-4">
+    <p class="copyright-text text-sm">
+        &copy; 2025 <span class="font-bold">VCF</span>. All rights reserved.
+    </p>
+    <p class="text-xs mt-1">
+        Designed by 
+        <a href="https://antocapteknologies.com" class="text-blue-400 hover:text-blue-300 font-semibold" target="_blank">
+            Antocap Teknologies
+        </a>
+    </p>
+</footer>    
+  
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js"></script>
+    
+   <!-- Your custom script -->
+<script type="module" src="script.js"></script>
+<script type="module">
+
+document.addEventListener("contextmenu", function (event) {
+event.preventDefault(); // Disable right-click
+});
+
+document.addEventListener("keydown", function (event) {
+if (event.ctrlKey && (event.key === "u" || event.key === "U")) {
+  event.preventDefault(); // Disable "View Source" (Ctrl + U)
+}
+if (event.ctrlKey && event.shiftKey && event.key === "I") {
+  event.preventDefault(); // Disable DevTools (Ctrl + Shift + I)
+}
+if (event.ctrlKey && event.shiftKey && event.key === "J") {
+  event.preventDefault(); // Disable DevTools (Ctrl + Shift + J)
+}
+if (event.ctrlKey && event.key === "S") {
+  event.preventDefault(); // Disable Save (Ctrl + S)
+}
+if (event.ctrlKey && event.key === "P") {
+  event.preventDefault(); // Disable Print (Ctrl + P)
+}
+});
+
+
+</script>
+</body>
+</html>
