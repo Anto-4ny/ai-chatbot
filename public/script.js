@@ -3,22 +3,11 @@ import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    sendPasswordResetEmail,
-    onAuthStateChanged,
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import {
     getFirestore,
     doc,
     setDoc,
-    addDoc,
-    updateDoc,
-    getDoc,
-    query,
-    onSnapshot,
-    collection,
-    where,
-    getDocs,
-    Timestamp,
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
 
@@ -40,15 +29,15 @@ const storage = getStorage(app);
 
 
 // Ensure user is authenticated
-export const ensureAuthenticated = () => {
-    const userEmail = localStorage.getItem("userEmail");
+//export const ensureAuthenticated = () => {
+  //  const userEmail = localStorage.getItem("userEmail");
 
-    if (!userEmail) {
-        window.location.href = "/"; // Redirect to login page (adjust URL if necessary)
-    } else {
-        console.log("User is authenticated");
-    }
-};
+   // if (!userEmail) {
+  //      window.location.href = "/";
+   // } else {
+  //      console.log("User is authenticated");
+ //   }
+//};
 
 
 // DOM Content Loaded Event Listener
