@@ -159,15 +159,8 @@
     </div>
 </body>
 
-
-        <script type ="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
-        <script type ="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js"></script>
-        <script type ="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js"></script>
-        <script type ="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js"></script>
-        <script type ="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js"></script>
-    
         <script type="module" src="script.js"></script>
-        <script type="module">
+        <script>
             import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
 import {
     getAuth,
@@ -246,16 +239,6 @@ const storage = getStorage(app);
                 } catch (error) {
                     messageBox.innerText = `⚠️ Error: ${error.message}`;
                     messageBox.style.color = "red";
-                }
-            });
-        
-            // 🔹 Auto-fill Referral Code from URL (If Provided)
-            document.addEventListener("DOMContentLoaded", () => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const referralCode = urlParams.get("referral");
-                if (referralCode) {
-                    const referralInput = document.getElementById("referral-code");
-                    referralInput.value = referralCode;
                 }
             });
         
