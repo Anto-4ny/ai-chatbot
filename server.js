@@ -6,7 +6,7 @@ const app = express();
 
 // Set EJS as the templating engine
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views")); // Use __dirname instead of process.cwd() for better stability
+app.set("views", path.join(__dirname, "views")); // Ensure "views" folder exists
 
 // Serve static files (CSS, JS, images)
 app.use(express.static(path.join(__dirname, "public")));
@@ -14,14 +14,11 @@ app.use(express.static(path.join(__dirname, "public")));
 // Sample user data (Replace with real authentication logic)
 const sampleUser = { name: "John Doe" };
 
-// Routes
-const pages = [ "https://visa.vfsglobal.com/sgp/en/prt/", "dashboard", "chat", "booking", "validator", "referral", "withdraw", "profile"];
-
 // Home Page (Registration Page)
-app.get("https://visa.vfsglobal.com/sgp/en/prt/", (req, res) => res.render("index"));
+app.get("/", (req, res) => res.render("index")); // ✅ Serve "index.ejs"
 
-// Redirect /index to /
-app.get("https://visa.vfsglobal.com/sgp/en/prt/", (req, res) => res.redirect("/"));
+// Define valid page routes (Remove "index" since it's defined above)
+const pages = ["dashboard", "chat", "booking"];
 
 // Generate dynamic routes for all pages
 pages.forEach((page) => {

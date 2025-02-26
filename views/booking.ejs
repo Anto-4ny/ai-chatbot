@@ -70,64 +70,53 @@
 
     <!-- Overlay -->
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden lg:hidden"></div>
-    <section class="container mx-auto mt-20 px-4 lg:px-20 mb-20">
-        <!-- Booking Steps -->
-        <div id="booking-steps" class="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0 lg:space-x-10">
-            <div class="step w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center active">
-                <div class="step-circle w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">1</div>
-                <span class="text-lg font-semibold">Appointment Details</span>
-            </div>
-            <div class="step w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
-                <div class="step-circle w-10 h-10 flex items-center justify-center bg-gray-300 text-white font-bold rounded-full mb-2">2</div>
-                <span class="text-lg font-semibold">Your Details</span>
-            </div>
-            <div class="step w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
-                <div class="step-circle w-10 h-10 flex items-center justify-center bg-gray-300 text-white font-bold rounded-full mb-2">3</div>
-                <span class="text-lg font-semibold">Book Appointment</span>
-            </div>
-            <div class="step w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
-                <div class="step-circle w-10 h-10 flex items-center justify-center bg-gray-300 text-white font-bold rounded-full mb-2">4</div>
-                <span class="text-lg font-semibold">Services</span>
-            </div>
-            <div class="step w-full lg:w-1/5 text-center py-4 flex flex-col items-center">
-                <div class="step-circle w-10 h-10 flex items-center justify-center bg-gray-300 text-white font-bold rounded-full mb-2">5</div>
-                <span class="text-lg font-semibold">Review</span>
-            </div>
-        </div>
-    
-        <!-- Step Content -->
-        <div id="step-content" class="mt-10 p-8 bg-white shadow-lg rounded-lg"></div>
-    
-        <!-- Navigation Buttons -->
-        <div class="mt-6 flex justify-end space-x-4">
-            <button id="back-btn" class="px-6 py-3 bg-gray-400 hover:bg-gray-500 text-white text-lg font-semibold rounded-lg shadow-lg transition hidden">
-                Back
-            </button>
-            <button id="continue-btn" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white text-lg font-semibold rounded-lg shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                Continue
-            </button>
-        </div>
-    </section>
-    
+           <!-- Booking Steps -->
+<section class="container mx-auto p-6">
+<div id="booking-steps" class="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0 lg:space-x-10">
+    <div class="step w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center cursor-pointer" onclick="goToStep(0)">
+        <div class="step-circle w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">1</div>
+        <span class="text-lg font-semibold">Appointment Details</span>
+    </div>
+    <div class="step w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center cursor-pointer" onclick="goToStep(1)">
+        <div class="step-circle w-10 h-10 flex items-center justify-center bg-gray-300 text-white font-bold rounded-full mb-2">2</div>
+        <span class="text-lg font-semibold">Your Details</span>
+    </div>
+    <div class="step w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center cursor-pointer" onclick="goToStep(2)">
+        <div class="step-circle w-10 h-10 flex items-center justify-center bg-gray-300 text-white font-bold rounded-full mb-2">3</div>
+        <span class="text-lg font-semibold">Book Appointment</span>
+    </div>
+    <div class="step w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center cursor-pointer" onclick="goToStep(3)">
+        <div class="step-circle w-10 h-10 flex items-center justify-center bg-gray-300 text-white font-bold rounded-full mb-2">4</div>
+        <span class="text-lg font-semibold">Services</span>
+    </div>
+    <div class="step w-full lg:w-1/5 text-center py-4 flex flex-col items-center cursor-pointer" onclick="goToStep(4)">
+        <div class="step-circle w-10 h-10 flex items-center justify-center bg-gray-300 text-white font-bold rounded-full mb-2">5</div>
+        <span class="text-lg font-semibold">Review</span>
+    </div>
+</div>
+
+    <!-- Step Content -->
+    <div id="step-content" class="mt-10 p-8 bg-white shadow-lg rounded-lg"></div>
+
+    <!-- Navigation Buttons -->
+    <div class="mt-6 flex justify-end space-x-4">
+        <button id="back-btn" class="px-6 py-3 bg-gray-400 hover:bg-gray-500 text-white text-lg font-semibold rounded-lg shadow-lg transition hidden">
+            Back
+        </button>
+        <button id="continue-btn" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white text-lg font-semibold rounded-lg shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+            Continue
+        </button>
+    </div>
+</section>
+
     <script>
-        let currentStep = 0;
-        const steps = document.querySelectorAll('.step');
-        const stepCircles = document.querySelectorAll('.step-circle');
-        const stepContent = document.getElementById('step-content');
-        const continueBtn = document.getElementById('continue-btn');
-        const backBtn = document.getElementById('back-btn');
-    
-        let bookingData = {}; // Store user selections
-    
-        const stepContents = [
+    const stepContents = [
             // Step 1: Appointment Details
             `
             <div>
                 <p class="text-gray-600 text-sm mb-4 font-medium">All fields are mandatory</p>
                 <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-800 p-4 rounded-lg mb-6">
                     <p class="font-semibold">Appointment Details</p>
-                    <p class="text-sm mt-1">Please provide information about the type of visa you wish to apply for. Be aware that the appointment category Applicant 1 chooses will be applied to each of the applicants added to your appointment booking.</p>
-
                 </div>
                 <label class="block text-xl font-semibold mb-2">Choose Your Application Center</label>
                 <select id="application-center" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
@@ -145,6 +134,7 @@
                 <p id="category-availability" class="text-green-600 font-semibold mt-2 hidden">✔ Booking Available</p>
             </div>
             `,
+    
             // Step 2: Your Details
             `
             <div>
@@ -155,66 +145,348 @@
                 <input type="text" id="passport-number" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter passport number">
             </div>
             `,
-            `<div class="text-center p-10"><h2 class="text-2xl font-bold">Coming Soon...</h2></div>`,
-            `<div class="text-center p-10"><h2 class="text-2xl font-bold">Coming Soon...</h2></div>`,
-            `<div class="text-center p-10"><h2 class="text-2xl font-bold">Booking Complete!</h2></div>`
-        ];
     
-        function updateStepContent() {
-            stepContent.innerHTML = stepContents[currentStep];
+            // Step 3: Personal Details
+            `
+            <div>
+                <label class="block text-xl font-semibold mb-2">Date of Birth</label>
+                <input type="date" id="dob" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
     
-            backBtn.style.display = currentStep > 0 ? "block" : "none";
-            continueBtn.textContent = currentStep === steps.length - 1 ? "Finish" : "Continue";
-            continueBtn.disabled = true; 
+                <label class="block text-xl font-semibold mt-4 mb-2">Nationality</label>
+                <select id="nationality" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <option value="">Select your nationality</option>
+                    <option value="Angolan">Angolan</option>
+                    <option value="Portuguese">Portuguese</option>
+                </select>
     
-            stepCircles.forEach((circle, index) => {
-                circle.classList.toggle('bg-blue-500', index === currentStep);
-                circle.classList.toggle('bg-gray-300', index !== currentStep);
-            });
+                <label class="block text-xl font-semibold mt-4 mb-2">Phone Number</label>
+                <input type="text" id="phone" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter your phone number">
     
-            validateStep(); 
+                <label class="block text-xl font-semibold mt-4 mb-2">Email Address</label>
+                <input type="email" id="email" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter your email">
+            </div>
+            `,
+    
+            // Step 4: Book Appointment
+            `
+            <div>
+                <label class="block text-xl font-semibold mb-2">Select Appointment Date</label>
+                <input type="date" id="appointment-date" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+    
+                <label class="block text-xl font-semibold mt-4 mb-2">Select Appointment Time</label>
+                <select id="appointment-time" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <option value="">Select a time slot</option>
+                    <option value="09:00 AM">09:00 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                </select>
+    
+                <label class="block text-xl font-semibold mt-4 mb-2">Additional Notes (Optional)</label>
+                <textarea id="notes" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Add any additional details..."></textarea>
+            </div>
+            `,
+    
+            //step 5
+            `
+            <div class="max-w-3xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-xl p-8">
+    <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">Review & Confirm Your Appointment</h2>
+
+    <div class="space-y-6">
+        <div class="p-5 bg-gray-50 border-l-4 border-blue-500 rounded-lg shadow-sm flex justify-between items-center">
+            <div>
+                <p class="text-lg font-semibold text-gray-700">Application Center</p>
+                <p id="review-center" class="text-xl text-gray-900 font-medium"></p>
+            </div>
+            <button onclick="goToStep(0)" class="text-sm text-blue-600 hover:underline">Change</button>
+        </div>
+
+        <div class="p-5 bg-gray-50 border-l-4 border-blue-500 rounded-lg shadow-sm flex justify-between items-center">
+            <div>
+                <p class="text-lg font-semibold text-gray-700">Appointment Category</p>
+                <p id="review-category" class="text-xl text-gray-900 font-medium"></p>
+            </div>
+            <button onclick="goToStep(0)" class="text-sm text-blue-600 hover:underline">Change</button>
+        </div>
+
+        <div class="p-5 bg-gray-50 border-l-4 border-blue-500 rounded-lg shadow-sm flex justify-between items-center">
+            <div>
+                <p class="text-lg font-semibold text-gray-700">Full Name</p>
+                <p id="review-fullname" class="text-xl text-gray-900 font-medium"></p>
+            </div>
+            <button onclick="goToStep(1)" class="text-sm text-blue-600 hover:underline">Change</button>
+        </div>
+
+        <div class="p-5 bg-gray-50 border-l-4 border-blue-500 rounded-lg shadow-sm flex justify-between items-center">
+            <div>
+                <p class="text-lg font-semibold text-gray-700">Passport Number</p>
+                <p id="review-passport" class="text-xl text-gray-900 font-medium"></p>
+            </div>
+            <button onclick="goToStep(1)" class="text-sm text-blue-600 hover:underline">Change</button>
+        </div>
+
+        <div class="p-5 bg-gray-50 border-l-4 border-blue-500 rounded-lg shadow-sm flex justify-between items-center">
+            <div>
+                <p class="text-lg font-semibold text-gray-700">Date of Birth</p>
+                <p id="review-dob" class="text-xl text-gray-900 font-medium"></p>
+            </div>
+            <button onclick="goToStep(2)" class="text-sm text-blue-600 hover:underline">Change</button>
+        </div>
+
+        <div class="p-5 bg-gray-50 border-l-4 border-blue-500 rounded-lg shadow-sm flex justify-between items-center">
+            <div>
+                <p class="text-lg font-semibold text-gray-700">Nationality</p>
+                <p id="review-nationality" class="text-xl text-gray-900 font-medium"></p>
+            </div>
+            <button onclick="goToStep(2)" class="text-sm text-blue-600 hover:underline">Change</button>
+        </div>
+
+        <div class="p-5 bg-gray-50 border-l-4 border-blue-500 rounded-lg shadow-sm flex justify-between items-center">
+            <div>
+                <p class="text-lg font-semibold text-gray-700">Phone</p>
+                <p id="review-phone" class="text-xl text-gray-900 font-medium"></p>
+            </div>
+            <button onclick="goToStep(2)" class="text-sm text-blue-600 hover:underline">Change</button>
+        </div>
+
+        <div class="p-5 bg-gray-50 border-l-4 border-blue-500 rounded-lg shadow-sm flex justify-between items-center">
+            <div>
+                <p class="text-lg font-semibold text-gray-700">Email</p>
+                <p id="review-email" class="text-xl text-gray-900 font-medium"></p>
+            </div>
+            <button onclick="goToStep(2)" class="text-sm text-blue-600 hover:underline">Change</button>
+        </div>
+
+        <div class="p-5 bg-gray-50 border-l-4 border-blue-500 rounded-lg shadow-sm flex justify-between items-center">
+            <div>
+                <p class="text-lg font-semibold text-gray-700">Appointment Date & Time</p>
+                <p id="review-datetime" class="text-xl text-gray-900 font-medium"></p>
+            </div>
+            <button onclick="goToStep(3)" class="text-sm text-blue-600 hover:underline">Change</button>
+        </div>
+
+        <div class="p-5 bg-gray-50 border-l-4 border-blue-500 rounded-lg shadow-sm flex justify-between items-center">
+            <div>
+                <p class="text-lg font-semibold text-gray-700">Notes</p>
+                <p id="review-notes" class="text-xl text-gray-900 font-medium"></p>
+            </div>
+            <button onclick="goToStep(3)" class="text-sm text-blue-600 hover:underline">Change</button>
+        </div>
+    </div>
+
+    <button id="confirm-btn" class="mt-8 w-full px-6 py-4 bg-blue-500 hover:bg-blue-600 text-white text-lg font-semibold rounded-lg shadow-lg transition transform hover:scale-105">
+        Confirm & Submit
+    </button>
+</div>
+`
+            ];
+ 
+// 1. Selecting Elements
+const steps = document.querySelectorAll(".step");
+const stepContent = document.getElementById("step-content");
+const backBtn = document.getElementById("back-btn");
+const continueBtn = document.getElementById("continue-btn");
+const confirmBtn = document.getElementById("confirm-btn");
+let currentStep = parseInt(localStorage.getItem("currentStep")) || 0;
+let bookingData = JSON.parse(localStorage.getItem("bookingData")) || {}; // Persistent storage
+
+// 2. Update Step Content
+function updateStepContent() {
+    stepContent.innerHTML = stepContents[currentStep]; // Load relevant step's content
+    highlightSteps(); // Update step circle colors
+
+    // Restore previously entered data
+    const inputs = stepContent.querySelectorAll("input, select");
+    inputs.forEach((input) => {
+        if (bookingData[input.id]) {
+            input.value = bookingData[input.id];
         }
-    
-        function validateStep() {
-            let inputs = stepContent.querySelectorAll("input, select");
-    
-            function checkValidity() {
-                let allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
-    
-                inputs.forEach(input => {
-                    let message = document.getElementById(input.id + "-availability");
-                    if (message) message.classList.toggle("hidden", !input.value);
-                });
-    
-                continueBtn.disabled = !allFilled;
-            }
-    
-            inputs.forEach(input => {
-                input.addEventListener("input", checkValidity);
-                input.addEventListener("change", checkValidity);
-            });
-    
-            checkValidity(); 
+        input.addEventListener("input", saveInputData);
+    });
+
+    // If on the review step, display review content
+    if (currentStep === steps.length - 1) {
+        displayReview();
+    }
+
+    // Update button visibility
+    backBtn.style.display = currentStep > 0 ? "block" : "none";
+    continueBtn.disabled = !validateCurrentStep();
+}
+
+// 3. Save Input Data Immediately
+function saveInputData(event) {
+    const input = event.target;
+    bookingData[input.id] = input.value.trim();
+    updateLocalStorage();
+    validateCurrentStep();
+}
+
+// 4. Update Local Storage
+function updateLocalStorage() {
+    localStorage.setItem("currentStep", currentStep);
+    localStorage.setItem("bookingData", JSON.stringify(bookingData));
+}
+
+// 5. Validate Current Step
+function validateCurrentStep() {
+    let isValid = true;
+    const inputs = stepContent.querySelectorAll("input[required], select[required]");
+
+    inputs.forEach((input) => {
+        if (!input.value.trim()) {
+            isValid = false;
         }
-    
-        continueBtn.addEventListener('click', () => {
-            if (currentStep < steps.length - 1) {
-                currentStep++;
-                updateStepContent();
-            } else {
-                alert("Booking Completed!");
-            }
-        });
-    
-        backBtn.addEventListener('click', () => {
-            if (currentStep > 0) {
-                currentStep--;
-                updateStepContent();
-            }
-        });
-    
+    });
+
+    continueBtn.disabled = !isValid;
+    return isValid;
+}
+
+// 6. Highlight Active & Completed Steps
+function highlightSteps() {
+    steps.forEach((step, index) => {
+        const circle = step.querySelector(".step-circle");
+
+        if (index < currentStep) {
+            circle.classList.add("bg-green-500");
+            circle.classList.remove("bg-gray-300", "bg-blue-500");
+        } else if (index === currentStep) {
+            circle.classList.add("bg-blue-500");
+            circle.classList.remove("bg-gray-300", "bg-green-500");
+        } else {
+            circle.classList.add("bg-gray-300");
+            circle.classList.remove("bg-green-500", "bg-blue-500");
+        }
+    });
+}
+
+// 7. Step Navigation Controls
+steps.forEach((step, index) => {
+    step.addEventListener("click", () => {
+        if (index <= currentStep) {
+            goToStep(index);
+        }
+    });
+});
+
+// 8. Continue Button Functionality
+continueBtn.addEventListener("click", () => {
+    if (!validateCurrentStep()) return;
+
+    currentStep++;
+    if (currentStep >= steps.length) {
+        currentStep = steps.length - 1;
+    }
+
+    updateLocalStorage();
+    updateStepContent();
+});
+
+// 9. Back Button Functionality
+backBtn.addEventListener("click", () => {
+    if (currentStep > 0) {
+        currentStep--;
+        updateLocalStorage();
         updateStepContent();
-    </script>
+    }
+});
+
+// 10. Display Review Step with Editable Fields
+function displayReview() {
+    const reviewContainer = document.getElementById("review-content");
+    reviewContainer.innerHTML = `
+        <div class="review-item">
+            <label>Application Center:</label>
+            <input type="text" id="review-center" value="${bookingData["application-center"] || ""}" />
+        </div>
+        <div class="review-item">
+            <label>Appointment Category:</label>
+            <input type="text" id="review-category" value="${bookingData["appointment-category"] || ""}" />
+        </div>
+        <div class="review-item">
+            <label>Full Name:</label>
+            <input type="text" id="review-fullname" value="${bookingData["full-name"] || ""}" />
+        </div>
+        <div class="review-item">
+            <label>Passport Number:</label>
+            <input type="text" id="review-passport" value="${bookingData["passport-number"] || ""}" />
+        </div>
+        <div class="review-item">
+            <label>Date of Birth:</label>
+            <input type="date" id="review-dob" value="${bookingData["dob"] || ""}" />
+        </div>
+        <div class="review-item">
+            <label>Nationality:</label>
+            <input type="text" id="review-nationality" value="${bookingData["nationality"] || ""}" />
+        </div>
+        <div class="review-item">
+            <label>Phone Number:</label>
+            <input type="text" id="review-phone" value="${bookingData["phone"] || ""}" />
+        </div>
+        <div class="review-item">
+            <label>Email:</label>
+            <input type="email" id="review-email" value="${bookingData["email"] || ""}" />
+        </div>
+        <div class="review-item">
+            <label>Appointment Date & Time:</label>
+            <input type="datetime-local" id="review-datetime" value="${bookingData["appointment-date"] || ""}T${bookingData["appointment-time"] || ""}" />
+        </div>
+        <div class="review-item">
+            <label>Additional Notes:</label>
+            <textarea id="review-notes">${bookingData["notes"] || ""}</textarea>
+        </div>
+    `;
+
+    // Add event listeners to save changes made in the review step
+    const reviewInputs = reviewContainer.querySelectorAll("input, textarea");
+    reviewInputs.forEach((input) => {
+        input.addEventListener("input", () => {
+            bookingData[input.id.replace("review-", "")] = input.value.trim();
+            updateLocalStorage();
+        });
+    });
+}
+
+// 11. Navigate to Specific Step
+function goToStep(stepNumber) {
+    if (stepNumber <= currentStep) {
+        currentStep = stepNumber;
+        updateLocalStorage();
+        updateStepContent();
+    }
+}
+
+// 12. Confirm Button Submission
+confirmBtn.addEventListener("click", async () => {
+    try {
+        const response = await fetch("/api/submit-booking", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(bookingData)
+        });
+
+        if (response.ok) {
+            alert("Booking confirmed successfully!");
+
+            // Clear all saved data
+            localStorage.removeItem("currentStep");
+            localStorage.removeItem("bookingData");
+            bookingData = {};
+            currentStep = 0;
+            updateStepContent();
+        } else {
+            alert("Failed to submit booking. Please try again.");
+        }
+    } catch (error) {
+        console.error("Error submitting booking:", error);
+        alert("An error occurred. Please try again later.");
+    }
+});
+
+// 13. Initialize Form with Saved Data
+updateStepContent();
+
+</script>
     
     
    <!-- Footer -->
