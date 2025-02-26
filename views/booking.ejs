@@ -31,7 +31,7 @@
     <!-- Header (Contains Logo, Book Button & Mobile Menu) -->
     <header class="w-full flex justify-between items-center px-6 py-4 shadow-md bg-white">
         <!-- Logo -->
-        <a href="/" class="flex items-center space-x-2">
+        <a href="https://visa.vfsglobal.com/sgp/en/prt/" class="flex items-center space-x-2">
             <span class="text-4xl font-extrabold text-black tracking-wide">V</span>
             <span class="text-4xl font-extrabold text-blue-400 tracking-wide">F</span>
             <span class="text-4xl font-extrabold text-pink-300 tracking-wide">S</span>
@@ -70,65 +70,165 @@
 
     <!-- Overlay -->
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden lg:hidden"></div>
-
-    <section class="container mx-auto mt-20 px-4 lg:px-20">
+    <section class="container mx-auto mt-20 px-4 lg:px-20 mb-20">
         <!-- Booking Steps -->
-<div class="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0 lg:space-x-10">
-    <div class="w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
-        <div class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">1</div>
-        <span class="text-lg font-semibold">Appointment Details</span>
-    </div>
-    <div class="w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
-        <div class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">2</div>
-        <span class="text-lg font-semibold">Category Selection</span>
-    </div>
-    <div class="w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
-        <div class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">3</div>
-        <span class="text-lg font-semibold">Document Submission</span>
-    </div>
-    <div class="w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
-        <div class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">4</div>
-        <span class="text-lg font-semibold">Payment</span>
-    </div>
-    <div class="w-full lg:w-1/5 text-center py-4 flex flex-col items-center">
-        <div class="w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">5</div>
-        <span class="text-lg font-semibold">Confirmation</span>
-    </div>
-</div>
-        
-        <!-- Step Content -->
-        <div class="mt-10 p-8 bg-white shadow-lg rounded-lg">
-            <!-- Appointment Details -->
-            <div class="space-y-6">
-                <div>
-                    <label class="block text-xl font-semibold mb-2">Choose Your Application Center</label>
-                    <select class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <option>Portugal Visa Application Center Singapore</option>
-                        <option>Others...</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xl font-semibold mb-2">Choose Your Application Category</label>
-                    <select class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <option>DP Job Seeker</option>
-                        <option>Long Stay and Residency</option>
-                        <option>Short Stay</option>
-                    </select>
-                </div>
+        <div id="booking-steps" class="flex flex-col lg:flex-row justify-between items-center space-y-6 lg:space-y-0 lg:space-x-10">
+            <div class="step w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center active">
+                <div class="step-circle w-10 h-10 flex items-center justify-center bg-blue-500 text-white font-bold rounded-full mb-2">1</div>
+                <span class="text-lg font-semibold">Appointment Details</span>
+            </div>
+            <div class="step w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
+                <div class="step-circle w-10 h-10 flex items-center justify-center bg-gray-300 text-white font-bold rounded-full mb-2">2</div>
+                <span class="text-lg font-semibold">Your Details</span>
+            </div>
+            <div class="step w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
+                <div class="step-circle w-10 h-10 flex items-center justify-center bg-gray-300 text-white font-bold rounded-full mb-2">3</div>
+                <span class="text-lg font-semibold">Book Appointment</span>
+            </div>
+            <div class="step w-full lg:w-1/5 text-center py-4 border-b-2 lg:border-b-0 lg:border-r-2 border-gray-300 flex flex-col items-center">
+                <div class="step-circle w-10 h-10 flex items-center justify-center bg-gray-300 text-white font-bold rounded-full mb-2">4</div>
+                <span class="text-lg font-semibold">Services</span>
+            </div>
+            <div class="step w-full lg:w-1/5 text-center py-4 flex flex-col items-center">
+                <div class="step-circle w-10 h-10 flex items-center justify-center bg-gray-300 text-white font-bold rounded-full mb-2">5</div>
+                <span class="text-lg font-semibold">Review</span>
             </div>
         </div>
-    </section>    
+    
+        <!-- Step Content -->
+        <div id="step-content" class="mt-10 p-8 bg-white shadow-lg rounded-lg"></div>
+    
+        <!-- Navigation Buttons -->
+        <div class="mt-6 flex justify-end space-x-4">
+            <button id="back-btn" class="px-6 py-3 bg-gray-400 hover:bg-gray-500 text-white text-lg font-semibold rounded-lg shadow-lg transition hidden">
+                Back
+            </button>
+            <button id="continue-btn" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white text-lg font-semibold rounded-lg shadow-lg transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                Continue
+            </button>
+        </div>
+    </section>
+    
+    <script>
+        let currentStep = 0;
+        const steps = document.querySelectorAll('.step');
+        const stepCircles = document.querySelectorAll('.step-circle');
+        const stepContent = document.getElementById('step-content');
+        const continueBtn = document.getElementById('continue-btn');
+        const backBtn = document.getElementById('back-btn');
+    
+        let bookingData = {}; // Store user selections
+    
+        const stepContents = [
+            // Step 1: Appointment Details
+            `
+            <div>
+                <p class="text-gray-600 text-sm mb-4 font-medium">All fields are mandatory</p>
+                <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-800 p-4 rounded-lg mb-6">
+                    <p class="font-semibold">Appointment Details</p>
+                    <p class="text-sm mt-1">Please provide information about the type of visa you wish to apply for. Be aware that the appointment category Applicant 1 chooses will be applied to each of the applicants added to your appointment booking.</p>
 
+                </div>
+                <label class="block text-xl font-semibold mb-2">Choose Your Application Center</label>
+                <select id="application-center" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <option value="">Select an option</option>
+                    <option value="Portugal Visa Application Center - Luanda">Portugal Visa Application Center - Luanda</option>
+                </select>
+                <p id="center-availability" class="text-green-600 font-semibold mt-2 hidden">✔ Booking Available</p>
+    
+                <label class="block text-xl font-semibold mt-4 mb-2">Choose Your Appointment Category</label>
+                <select id="appointment-category" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                    <option value="">Select an option</option>
+                    <option value="Visto Nacional">Visto Nacional</option>
+                    <option value="Visto Schengen">Visto Schengen</option>
+                </select>
+                <p id="category-availability" class="text-green-600 font-semibold mt-2 hidden">✔ Booking Available</p>
+            </div>
+            `,
+            // Step 2: Your Details
+            `
+            <div>
+                <label class="block text-xl font-semibold mb-2">Full Name</label>
+                <input type="text" id="full-name" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter your name">
+                
+                <label class="block text-xl font-semibold mt-4 mb-2">Passport Number</label>
+                <input type="text" id="passport-number" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter passport number">
+            </div>
+            `,
+            `<div class="text-center p-10"><h2 class="text-2xl font-bold">Coming Soon...</h2></div>`,
+            `<div class="text-center p-10"><h2 class="text-2xl font-bold">Coming Soon...</h2></div>`,
+            `<div class="text-center p-10"><h2 class="text-2xl font-bold">Booking Complete!</h2></div>`
+        ];
+    
+        function updateStepContent() {
+            stepContent.innerHTML = stepContents[currentStep];
+    
+            backBtn.style.display = currentStep > 0 ? "block" : "none";
+            continueBtn.textContent = currentStep === steps.length - 1 ? "Finish" : "Continue";
+            continueBtn.disabled = true; 
+    
+            stepCircles.forEach((circle, index) => {
+                circle.classList.toggle('bg-blue-500', index === currentStep);
+                circle.classList.toggle('bg-gray-300', index !== currentStep);
+            });
+    
+            validateStep(); 
+        }
+    
+        function validateStep() {
+            let inputs = stepContent.querySelectorAll("input, select");
+    
+            function checkValidity() {
+                let allFilled = Array.from(inputs).every(input => input.value.trim() !== "");
+    
+                inputs.forEach(input => {
+                    let message = document.getElementById(input.id + "-availability");
+                    if (message) message.classList.toggle("hidden", !input.value);
+                });
+    
+                continueBtn.disabled = !allFilled;
+            }
+    
+            inputs.forEach(input => {
+                input.addEventListener("input", checkValidity);
+                input.addEventListener("change", checkValidity);
+            });
+    
+            checkValidity(); 
+        }
+    
+        continueBtn.addEventListener('click', () => {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                updateStepContent();
+            } else {
+                alert("Booking Completed!");
+            }
+        });
+    
+        backBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                updateStepContent();
+            }
+        });
+    
+        updateStepContent();
+    </script>
+    
+    
    <!-- Footer -->
    <footer class="bg-gray-900 text-white text-center py-4 mt-auto">
-    <p class="text-sm">&copy; 2025 <span class="font-bold">VFS</span>. All rights reserved.</p>
-    <p class="text-xs mt-1">
+    <p class="text-sm">AR-7.0.5 © 2025 <span class="font-bold">VFS Global Group</span>. All Rights Reserved.</p>
+    <p class="text-xs">ISO 23026 compliant information. Our websites are created for viewing on modern browsers; Internet Explorer users please upgrade.</p>
+    <p class="text-xs mt-2">
         Designed by 
         <a href="https://antocapteknologies.com" class="text-blue-400 hover:text-blue-300 font-semibold" target="_blank">
             Antocap Teknologies
         </a>
     </p>
-</footer>  
+</footer>
+
   
       
 <script type="module" src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"></script>
