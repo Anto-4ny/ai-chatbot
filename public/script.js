@@ -27,17 +27,17 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-
+export { auth }
 // Ensure user is authenticated
-//export const ensureAuthenticated = () => {
-  //  const userEmail = localStorage.getItem("userEmail");
+export const ensureAuthenticated = () => {
+    const userEmail = localStorage.getItem("userEmail");
 
-   // if (!userEmail) {
-  //      window.location.href = "/";
-   // } else {
-  //      console.log("User is authenticated");
- //   }
-//};
+   if (!userEmail) {
+       window.location.href = "/";
+    } else {
+        console.log("User is authenticated");
+    }
+};
 
 
 // DOM Content Loaded Event Listener
