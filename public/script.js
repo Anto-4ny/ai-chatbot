@@ -38,9 +38,6 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// ✅ Export properly
-export { auth, db, doc, getDoc, query, collection, where, getDocs, storage, sendPasswordResetEmail };
-
 
 // Ensure user is authenticated
 export const ensureAuthenticated = () => {
