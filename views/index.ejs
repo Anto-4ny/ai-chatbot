@@ -159,79 +159,77 @@
     </div>
 </body>
 
-        <script type="module" src="script.js"></script>
-        <script>
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    sendPasswordResetEmail,
-    onAuthStateChanged,
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import {
-    getFirestore,
-    doc,
-    setDoc,
-    addDoc,
-    updateDoc,
-    getDoc,
-    query,
-    onSnapshot,
-    collection,
-    where,
-    getDocs,
-    Timestamp,
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-import { getStorage } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+    import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        sendPasswordResetEmail,
+        onAuthStateChanged,
+    } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+    import {
+        getFirestore,
+        doc,
+        setDoc,
+        addDoc,
+        updateDoc,
+        getDoc,
+        query,
+        onSnapshot,
+        collection,
+        where,
+        getDocs,
+        Timestamp,
+    } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+    import { getStorage } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-storage.js";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyB7t1wWHhPYBitqKC4SJ8lqP1WMLDefCxo",
-    authDomain: "antocap-referrals.firebaseapp.com",
-    projectId: "antocap-referrals",
-    storageBucket: "antocap-referrals.appspot.com",
-    messagingSenderId: "1071760453747",
-    appId: "1:1071760453747:web:fafa7ac624ba7452e6fa06",
-    measurementId: "G-EPLJB8MTRH",
-};
+    const firebaseConfig = {
+        apiKey: "AIzaSyB7t1wWHhPYBitqKC4SJ8lqP1WMLDefCxo",
+        authDomain: "antocap-referrals.firebaseapp.com",
+        projectId: "antocap-referrals",
+        storageBucket: "antocap-referrals.appspot.com",
+        messagingSenderId: "1071760453747",
+        appId: "1:1071760453747:web:fafa7ac624ba7452e6fa06",
+        measurementId: "G-EPLJB8MTRH",
+    };
 
-// ✅ Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app); 
-const db = getFirestore(app);
-const storage = getStorage(app);
+    // ✅ Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const storage = getStorage(app);
 
-            // 🔹 Toggle Between Forms (Signup/Login/Forgot Password)
-            const toggleForm = (hide, show) => {
-                document.getElementById(hide).classList.add("hidden");
-                document.getElementById(show).classList.remove("hidden");
-            };
-        
-            document.getElementById("show-login").addEventListener("click", (e) => {
-                e.preventDefault();
-                toggleForm("signup-section", "login-section");
-            });
-        
-            document.getElementById("show-signup").addEventListener("click", (e) => {
-                e.preventDefault();
-                toggleForm("login-section", "signup-section");
-            });
-        
-            document.getElementById("forgot-password").addEventListener("click", (e) => {
-                e.preventDefault();
-                toggleForm("login-section", "forgot-password-section");
-            });
-        
-            document.getElementById("back-to-login").addEventListener("click", (e) => {
-                e.preventDefault();
-                toggleForm("forgot-password-section", "login-section");
-            });
-        
-            // 🔹 Send Reset Password Email
-            document.getElementById("send-reset-email").addEventListener("click", async () => {
-                const email = document.getElementById("reset-email").value;
+    // 🔹 Toggle Between Forms (Signup/Login/Forgot Password)
+    const toggleForm = (hide, show) => {
+        document.getElementById(hide)?.classList.add("hidden");
+        document.getElementById(show)?.classList.remove("hidden");
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const loginBtn = document.getElementById("show-login");
+        const signupBtn = document.getElementById("show-signup");
+        const forgotBtn = document.getElementById("forgot-password");
+        const backBtn = document.getElementById("back-to-login");
+        const resetBtn = document.getElementById("send-reset-email");
+
+        if (loginBtn) loginBtn.addEventListener("click", (e) => { e.preventDefault(); toggleForm("signup-section", "login-section"); });
+        if (signupBtn) signupBtn.addEventListener("click", (e) => { e.preventDefault(); toggleForm("login-section", "signup-section"); });
+        if (forgotBtn) forgotBtn.addEventListener("click", (e) => { e.preventDefault(); toggleForm("login-section", "forgot-password-section"); });
+        if (backBtn) backBtn.addEventListener("click", (e) => { e.preventDefault(); toggleForm("forgot-password-section", "login-section"); });
+
+        // 🔹 Send Reset Password Email
+        if (resetBtn) {
+            resetBtn.addEventListener("click", async () => {
+                const email = document.getElementById("reset-email")?.value;
                 const messageBox = document.getElementById("reset-message");
-        
+
+                if (!email) {
+                    messageBox.innerText = "⚠️ Please enter an email.";
+                    messageBox.style.color = "red";
+                    return;
+                }
+
                 try {
                     await sendPasswordResetEmail(auth, email);
                     messageBox.innerText = "✅ Password reset email sent! Check your inbox.";
@@ -241,25 +239,27 @@ const storage = getStorage(app);
                     messageBox.style.color = "red";
                 }
             });
-        
-            // 🔹 Disable Right-Click & Common DevTools Shortcuts
-            document.addEventListener("contextmenu", (event) => event.preventDefault()); // Disable right-click
-        
-            document.addEventListener("keydown", (event) => {
-                const blockedKeys = [
-                    { ctrl: true, key: "u" }, // View Source (Ctrl + U)
-                    { ctrl: true, shift: true, key: "I" }, // DevTools (Ctrl + Shift + I)
-                    { ctrl: true, shift: true, key: "J" }, // DevTools (Ctrl + Shift + J)
-                    { ctrl: true, key: "S" }, // Save (Ctrl + S)
-                    { ctrl: true, key: "P" } // Print (Ctrl + P)
-                ];
-        
-                blockedKeys.forEach(({ ctrl, shift, key }) => {
-                    if (event.ctrlKey === ctrl && event.shiftKey === shift && event.key.toLowerCase() === key.toLowerCase()) {
-                        event.preventDefault();
-                    }
-                });
+        }
+
+        // 🔹 Disable Right-Click & Common DevTools Shortcuts
+        document.addEventListener("contextmenu", (event) => event.preventDefault());
+
+        document.addEventListener("keydown", (event) => {
+            const blockedKeys = [
+                { ctrl: true, key: "u" }, // View Source (Ctrl + U)
+                { ctrl: true, shift: true, key: "I" }, // DevTools (Ctrl + Shift + I)
+                { ctrl: true, shift: true, key: "J" }, // DevTools (Ctrl + Shift + J)
+                { ctrl: true, key: "S" }, // Save (Ctrl + S)
+                { ctrl: true, key: "P" }, // Print (Ctrl + P)
+            ];
+
+            blockedKeys.forEach(({ ctrl, shift, key }) => {
+                if (event.ctrlKey === ctrl && event.shiftKey === shift && event.key.toLowerCase() === key.toLowerCase()) {
+                    event.preventDefault();
+                }
             });
-        
-        </script>        
+        });
+    });
+</script>
+      
 </html>
